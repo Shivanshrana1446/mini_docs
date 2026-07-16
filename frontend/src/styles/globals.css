@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  margin: 0.75rem 0 0.75rem 1.5rem;
+  padding-left: 1rem;
+}
+
+.ProseMirror ul {
+  list-style-type: disc;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+}
+
+.ProseMirror li {
+  margin: 0.35rem 0;
+}
+
+.ProseMirror h1,
+.ProseMirror h2 {
+  margin: 1rem 0 0.5rem;
+  font-weight: 700;
+}
+
+.ProseMirror h1 {
+  font-size: 2rem;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5rem;
+}
+
+.ProseMirror p {
+  margin: 0.5rem 0;
+}
