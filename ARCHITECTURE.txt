@@ -1,0 +1,351 @@
+This project is a lightweight collaborative document editor inspired by Google Docs, developed as part of the Ajaia AI-Native Full Stack Developer Assignment.
+
+The application enables users to create, edit, save, share, and manage rich-text documents through a simple and intuitive interface. The focus was on delivering a complete end-to-end product within the assignment's 4–6 hour time constraint while maintaining clean architecture and code quality.
+
+---
+
+# Technology Stack
+
+## Frontend
+
+- React (Vite)
+- Tailwind CSS
+- React Router DOM
+- Axios
+- Tiptap Rich Text Editor
+
+## Backend
+
+- Node.js
+- Express.js
+- JWT Authentication
+- Multer
+
+## Database
+
+- MongoDB Atlas
+- Mongoose ODM
+
+## Deployment
+
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
+
+---
+
+# System Architecture
+
+```
+                    Browser
+
+                       │
+
+               React + Vite Frontend
+
+                       │
+             REST API (Axios Requests)
+
+                       │
+
+              Express.js Backend
+
+        ┌──────────────┼───────────────┐
+        │              │               │
+ Authentication   Document APIs   Sharing APIs
+        │              │               │
+        └──────────────┼───────────────┘
+                       │
+
+                MongoDB Atlas
+```
+
+The frontend communicates with the backend using REST APIs. The backend handles authentication, document management, sharing, and persistence before storing data in MongoDB.
+
+---
+
+# Database Design
+
+## User Collection
+
+Each user contains:
+
+- Name
+- Email
+- Password (hashed)
+- Created Date
+
+Example:
+
+```json
+{
+  "_id": "...",
+  "name": "Alice",
+  "email": "alice@example.com",
+  "password": "hashedPassword"
+}
+```
+
+---
+
+## Document Collection
+
+Each document stores:
+
+- Title
+- Rich Text Content
+- Owner
+- Shared Users
+- Created Date
+- Updated Date
+
+Example:
+
+```json
+{
+  "_id": "...",
+  "title": "Project Proposal",
+  "content": "<p>Hello World</p>",
+  "owner": "UserID",
+  "sharedWith": [
+      "UserID2"
+  ],
+  "createdAt": "...",
+  "updatedAt": "..."
+}
+```
+
+---
+
+# Application Flow
+
+## Authentication
+
+1. User logs in.
+2. Backend validates credentials.
+3. JWT token is generated.
+4. Token is stored on the client.
+5. Protected routes require a valid JWT.
+
+---
+
+## Document Flow
+
+User creates a new document.
+
+↓
+
+Document is stored in MongoDB.
+
+↓
+
+User edits the document.
+
+↓
+
+Changes are saved.
+
+↓
+
+Document can be reopened later.
+
+---
+
+## Sharing Flow
+
+Owner selects Share.
+
+↓
+
+Owner enters another user's email.
+
+↓
+
+Backend verifies the user.
+
+↓
+
+User is added to the document's shared list.
+
+↓
+
+Shared user sees the document under **Shared With Me**.
+
+---
+
+## File Upload Flow
+
+User uploads a supported file (.txt or .md).
+
+↓
+
+Frontend reads the file.
+
+↓
+
+Content is inserted into the editor.
+
+↓
+
+User continues editing normally.
+
+---
+
+## Export Flow (Stretch Feature)
+
+User clicks Export.
+
+↓
+
+Selects Export as PDF.
+
+↓
+
+Current document is converted into a PDF.
+
+↓
+
+Downloaded using the document title as the filename.
+
+---
+
+# Major Design Decisions
+
+## React + Vite
+
+React was selected for building a modern component-based interface, while Vite provides fast development and optimized production builds.
+
+---
+
+## Tiptap Editor
+
+Tiptap was chosen because it provides:
+
+- Rich text editing
+- Heading support
+- Lists
+- Bold
+- Italic
+- Underline
+
+It offers a clean API and integrates well with React.
+
+---
+
+## MongoDB Atlas
+
+MongoDB was selected because:
+
+- Flexible document storage
+- Easy integration with Mongoose
+- Simple cloud deployment
+- Suitable for rapidly evolving document structures
+
+---
+
+## JWT Authentication
+
+JWT provides lightweight stateless authentication suitable for this project while protecting document-related APIs.
+
+---
+
+## REST API
+
+A REST architecture was used because it is simple, maintainable, and well suited for CRUD-based applications.
+
+---
+
+# Error Handling
+
+The application includes validation for:
+
+- Invalid login credentials
+- Missing required fields
+- Unsupported upload file types
+- Sharing with a non-existent user
+- Unauthorized document access
+- API request failures
+
+Meaningful error messages are displayed to the user.
+
+---
+
+# Security Considerations
+
+The application includes:
+
+- Password hashing
+- JWT-based authentication
+- Protected backend routes
+- Environment variables for sensitive configuration
+- MongoDB connection string stored securely in environment variables
+
+---
+
+# Scalability
+
+The architecture can be extended to support:
+
+- Real-time collaboration using Socket.IO
+- Comments and suggestions
+- Version history
+- Role-based permissions
+- Document search
+- Activity logs
+
+without significant architectural changes.
+
+---
+
+# AI-Native Development
+
+This project was developed using an AI-assisted workflow.
+
+AI tools accelerated:
+
+- Architecture planning
+- API design
+- React component generation
+- Backend boilerplate
+- Rich text editor integration
+- Debugging
+- Deployment guidance
+- Documentation
+
+All AI-generated code was reviewed, tested, and modified where necessary before integration.
+
+---
+
+# Tradeoffs
+
+Given the assignment's 4–6 hour limit, I prioritized implementing all core requirements with a clean user experience over building advanced collaboration features.
+
+I intentionally did not implement:
+
+- Real-time collaboration
+- Commenting
+- Version history
+- Role-based permissions
+
+Instead, I focused on delivering a stable, fully deployed application with authentication, document editing, sharing, persistence, and an additional PDF export feature.
+
+---
+
+# Future Improvements
+
+With an additional 2–4 hours, I would implement:
+
+- Real-time collaboration using WebSockets
+- Document version history
+- Comments and suggestions
+- Role-based access control
+- User presence indicators
+- Search functionality
+- Markdown export
+- Improved mobile editing experience
+
+---
+
+# Conclusion
+
+The final solution provides a complete full-stack collaborative document editor that satisfies the assignment requirements while maintaining a clean architecture, modular codebase, and scalable design. The application demonstrates authentication, rich-text editing, document persistence, sharing, file import, PDF export, deployment, and AI-assisted development.

@@ -1,0 +1,54 @@
+# AI Workflow
+
+## AI Tools Used
+
+- ChatGPT
+- GitHub Copilot
+- Cline
+- Ollama
+- Continue
+
+---
+
+## How AI Helped
+
+AI accelerated several parts of development including:
+
+- Project architecture planning
+- Folder structure
+- API design
+- React component generation
+- Backend boilerplate
+- Debugging
+- Deployment guidance
+- Documentation
+
+---
+
+## What I Changed
+
+I reviewed every AI-generated response before integrating it.
+
+Several implementations were modified to:
+
+- Improve code readability
+- Match project requirements
+- Fix bugs
+- Simplify state management
+- Improve UI consistency
+
+---
+
+## Verification
+
+I manually verified:
+
+- Authentication
+- Document creation
+- Rich-text editing
+- File upload
+- Sharing workflow
+- Persistence
+- Export functionality
+
+Additionally, I included an automated test for a core feature.
