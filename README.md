@@ -1,3 +1,5 @@
+live url : https://mini-docs-bslg.vercel.app/login
+
 # Mini Docs
 
 AI-native collaborative document editor starter project.
